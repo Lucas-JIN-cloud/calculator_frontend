@@ -23,7 +23,7 @@ Handles user input, interface rendering and history display. **No local calculat
 1. Clone the repository
 
 ```
-git clone https://github.com/yourname/calculator-frontend.git
+git clone https://github.com/Lucas-JIN-cloud/calculator_frontend.git
 ```
 2. Import the project into HBuilderX
 3. Configure dev proxy

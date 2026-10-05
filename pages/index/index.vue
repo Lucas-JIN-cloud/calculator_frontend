@@ -145,7 +145,7 @@
           </view>
           <view class="record-expr">{{ item.expression }}</view>
           <view class="record-result">= {{ formatNumber(item.result) }}</view>
-          <view class="record-time">{{ item.createTime }}</view>
+          <view class="record-time">{{ item.createdAt }}</view>
         </view>
         <view class="empty-tip" v-if="historyList.length === 0">No calculation records</view>
       </scroll-view>
@@ -265,7 +265,7 @@ const themeList = ref(['theme-default', 'theme-dark', 'theme-green', 'theme-blue
 const currentThemeIndex = ref(0)
 const currentTheme = computed(() => themeList.value[currentThemeIndex.value])
 
-const API_BASE = '/api'
+const API_BASE = 'https://calculator-backend-nshsffpxka.cn-hangzhou.fcapp.run/api'
 
 // Switch Theme
 const switchTheme = () => {
@@ -316,10 +316,10 @@ const calculate = async () => {
     })
 
     if (res.data.success) {
-      currentResult.value = formatNumber(res.data.result)
+      currentResult.value = formatNumber(res.data.data.result)
       loadHistory()
     } else {
-      errorMsg.value = res.data.message
+      errorMsg.value = res.data.error || 'Calculation failed'
     }
   } catch (e) {
     errorMsg.value = 'Cannot connect to server'
